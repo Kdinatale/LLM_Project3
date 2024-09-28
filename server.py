@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import pickle
 import numpy as np
 
@@ -10,7 +10,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 @app.route('/')
 
 def home():
-    return 'Hello, World! This is the ML model API.'
+    return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 
@@ -24,10 +24,18 @@ def predict():
         return jsonify(error="The 'features' key is missing from the request payload."), 400
 
     # Convert features into the right format and make a prediction
-    prediction = model.predict([features])
+    prediction = model.polarity_scores(features)
     
-    # Return the prediction
-    return jsonify(prediction=int(prediction[0]))
+    compound = int(prediction["compound"])
+    
+    return_string = "The Sentiment is "
+
+    if compound > 0: 
+        return_string += "Positive"
+    else: 
+        return_string += "Negative"
+    
+    return return_string
 
 if __name__ == '__main__':
     app.run(debug=True)
