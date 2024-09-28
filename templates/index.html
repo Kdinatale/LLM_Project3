@@ -10,29 +10,84 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #ffe5ec;
+      }
+
+      .form-container {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgba(156, 236, 241, 0.904);
+        padding-top: 10%;
+        padding-bottom: 10%;
+        padding: 20px;
+        background-color: #adc178;
+      }
+
+      form {
+        background-color: #dde5b6;
+        width: 80%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 5%;
+        padding-bottom: 2%;
+        border-radius: 10px;
+        height: 100%;
+      }
+      .form-group {
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .btn {
+        background-color: #a98467;
+        width: 50%;
+        font-family: "DM Serif Display", serif;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 1.25em;
+      }
+
+      .btn:hover {
+        background-color: #94745b;
+      }
+
+      label {
+        font-family: "DM Serif Display", serif;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 1.5em;
+      }
+    </style>
   </head>
   <body>
     <header>
       <h1>Assignment 3 - Kayleigh DiNatale and Victoria Wiegand</h1>
     </header>
 
-    <main>
+    <div class="form-container">
       <form action="/predict" method="POST" class="needs-validation" novalidate>
         <div class="form-group">
-          <label for="sentence">Text for Sentiment Analysis:</label>
+          <label for="sentence">Enter Text for Sentiment Analysis:</label>
           <textarea
             class="form-control"
             id="sentence"
             name="sentence"
-            rows="3"
+            rows="8"
             required
           ></textarea>
           <div class="invalid-feedback">Please enter a sentence</div>
         </div>
-        <button class="btn btn-primary" type="submit" value="submit">
-          Submit
-        </button>
-
+        <button class="btn" type="submit" value="submit">Submit</button>
         <!-- <input type="submit" value="Submit" /> -->
         <!--
         <label for="sentence">Enter Text for Sentiment Analysis: </label><br />
@@ -40,7 +95,7 @@
         <input type="submit" value="Submit" />
         -->
       </form>
-    </main>
+    </div>
 
     <!-- Testing Bootstrap validation -->
     <script>
