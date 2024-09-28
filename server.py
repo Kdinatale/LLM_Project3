@@ -17,10 +17,7 @@ def home():
 def predict():
     # Get data from POST request
     features = request.form['sentence']
-    # data = request.get_json(force=True)
-    # Ensure that we received the expected array of features
 
-    # Convert features into the right format and make a prediction
     prediction = model.polarity_scores(features)
     
     compound = float(prediction["compound"])
@@ -32,7 +29,8 @@ def predict():
     else: 
         return_string += "Negative"
     
-    return str(compound)
+    return render_template('result.html', result=str(compound))
+    # return str(compound)
 
 if __name__ == '__main__':
     app.run(debug=True)
