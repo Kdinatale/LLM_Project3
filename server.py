@@ -29,7 +29,7 @@ def predict():
     else: 
         return_string += "Negative"
     
-    return render_template('result.html', result=str(compound))
+    return render_template('result.html', result=str(compound), sentence=features)
     # return str(compound)
 
 if __name__ == '__main__':
