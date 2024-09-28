@@ -16,17 +16,14 @@ def home():
 
 def predict():
     # Get data from POST request
-    data = request.get_json(force=True)
+    features = request.form['sentence']
+    # data = request.get_json(force=True)
     # Ensure that we received the expected array of features
-    try:
-        features = data['features']
-    except KeyError:
-        return jsonify(error="The 'features' key is missing from the request payload."), 400
 
     # Convert features into the right format and make a prediction
     prediction = model.polarity_scores(features)
     
-    compound = int(prediction["compound"])
+    compound = float(prediction["compound"])
     
     return_string = "The Sentiment is "
 
@@ -35,7 +32,7 @@ def predict():
     else: 
         return_string += "Negative"
     
-    return return_string
+    return str(compound)
 
 if __name__ == '__main__':
     app.run(debug=True)
